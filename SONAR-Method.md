@@ -36,14 +36,14 @@ SONAR assumes **trusted access** to the systems being diagnosed. This is the fun
 
 SEAL works from submitted evidence. It must verify everything because the data came from someone else and may be incomplete, biased, or wrong. SEAL's entire Phase 1 exists to establish ground truth from unreliable inputs.
 
-SONAR works from direct observation. It reads the actual systems — project management tools, communication platforms, time tracking, financial data, calendars, CRM. The data is authoritative. SONAR doesn't need to verify that a Slack message was sent or that a ClickUp task took 6 hours. The system says so. The question isn't "is this true?" but "what does this pattern mean?"
+SONAR works from direct observation. It reads the actual systems: project management tools, communication platforms, time tracking, financial data, calendars, CRM. The data is authoritative. SONAR doesn't need to verify that a Slack message was sent or that a ClickUp task took 6 hours. The system says so. The question isn't "is this true?" but "what does this pattern mean?"
 
 This changes the entire method:
 
 - **No source tiering.** System data is Tier 1 by default. No need to classify source reliability.
 - **No claims-vs-evidence separation.** The data is the evidence. There are no third-party claims to verify.
 - **No forensic skepticism.** The mapper trusts what the systems show. Its job is to observe patterns, not to doubt inputs.
-- **Different failure mode.** SEAL's failure mode is accepting a false claim as fact. SONAR's failure mode is misinterpreting a true pattern — seeing automation opportunity where the real issue is a missing process, or measuring friction on a process that shouldn't exist at all.
+- **Different failure mode.** SEAL's failure mode is accepting a false claim as fact. SONAR's failure mode is misinterpreting a true pattern, such as seeing automation opportunity where the real issue is a missing process, or measuring friction on a process that shouldn't exist at all.
 
 ---
 
@@ -55,13 +55,13 @@ The mapper's job is to answer: **"How does work actually move through this organ
 
 Not how the org chart says it moves. Not how the SOPs describe it. How it *actually* moves, as evidenced by the systems people use every day.
 
-The mapper produces an **Operational Map** — a complete inventory of how work flows, organized by:
+The mapper produces an **Operational Map**, a complete inventory of how work flows, organized by:
 
 **Process Inventory.** Every recurring process the organization runs, extracted from observed system activity. A "process" is any repeatable sequence of actions that produces an output: onboarding a client, producing a deliverable, running payroll, handling a support request, creating a report.
 
 For each process, the map captures:
 - **What triggers it** (new client, calendar date, request, system event)
-- **Who touches it** (roles, not names — but noting when one person is the single point of failure)
+- **Who touches it** (roles, not names, but noting when one person is the single point of failure)
 - **What systems it crosses** (how many tools does this process move through?)
 - **What handoffs occur** (where does work pass from one person or system to another?)
 - **What the output is** (deliverable, decision, communication, data change)
@@ -105,19 +105,19 @@ Not in absolute terms (that requires time-tracking data that may not exist), but
 
 **The Five Friction Dimensions:**
 
-1. **Time Friction** — How much elapsed time does this process consume relative to the value it produces? A 10-minute task that takes 3 days because it's waiting in someone's queue has high time friction even though the labor is low.
+1. **Time Friction.** How much elapsed time does this process consume relative to the value it produces? A 10-minute task that takes 3 days because it's waiting in someone's queue has high time friction even though the labor is low.
 
-2. **Touch Friction** — How many people touch this process? Each touch is a handoff, and each handoff is a potential delay, error, or context loss. A process that requires 5 people to review what one person could decide has high touch friction.
+2. **Touch Friction.** How many people touch this process? Each touch is a handoff, and each handoff is a potential delay, error, or context loss. A process that requires 5 people to review what one person could decide has high touch friction.
 
-3. **System Friction** — How many tools does this process cross? Each system boundary is a potential data loss point, a manual re-entry step, or an integration failure. A process that lives in one tool has lower system friction than one that crosses four.
+3. **System Friction.** How many tools does this process cross? Each system boundary is a potential data loss point, a manual re-entry step, or an integration failure. A process that lives in one tool has lower system friction than one that crosses four.
 
-4. **Repetition Friction** — How often is this exact sequence of steps repeated? High-frequency manual-repetitive processes burn more total friction than low-frequency ones, even if each individual occurrence is small.
+4. **Repetition Friction.** How often is this exact sequence of steps repeated? High-frequency manual-repetitive processes burn more total friction than low-frequency ones, even if each individual occurrence is small.
 
-5. **Error Friction** — How often does this process fail, require rework, or produce the wrong output? Error-prone processes consume hidden time in correction and recovery.
+5. **Error Friction.** How often does this process fail, require rework, or produce the wrong output? Error-prone processes consume hidden time in correction and recovery.
 
-For each process in the Operational Map, the measurer produces a **Friction Score** — a composite of the five dimensions, weighted by observed frequency. The output is a **Friction Table**: every process ranked by total friction cost, with the dimension breakdown visible so you can see *why* each process is expensive.
+For each process in the Operational Map, the measurer produces a **Friction Score**, a composite of the five dimensions, weighted by observed frequency. The output is a **Friction Table**: every process ranked by total friction cost, with the dimension breakdown visible so you can see *why* each process is expensive.
 
-**The Friction Tax.** The measurer also calculates an overall **Friction Tax** — the estimated percentage of total operational capacity consumed by friction rather than production. This is the number that makes margin pressure tangible: "37% of your operational capacity is friction, not output."
+**The Friction Tax.** The measurer also calculates an overall **Friction Tax**: the estimated percentage of total operational capacity consumed by friction rather than production. This is the number that makes margin pressure tangible: "37% of your operational capacity is friction, not output."
 
 **The measurer is prohibited from:**
 - Recommending specific interventions
@@ -133,7 +133,7 @@ Its job is to quantify what Phase 1 observed. Nothing more.
 
 The prioritizer's job is to answer: **"Where should we intervene first, and how?"**
 
-It takes the Operational Map (Phase 1) and Friction Table (Phase 2) and produces an **Intervention Roadmap** — a ranked list of specific changes, each classified by type and scored by impact and feasibility.
+It takes the Operational Map (Phase 1) and Friction Table (Phase 2) and produces an **Intervention Roadmap**, a ranked list of specific changes, each classified by type and scored by impact and feasibility.
 
 **The Intervention Taxonomy:**
 
@@ -143,27 +143,27 @@ Every recommended intervention falls into one of three categories:
 |----------|-----------|---------|
 | **Automate** | Replace a manual process with a system that runs without human intervention. | Auto-generate weekly client reports from project management data instead of having a PM write them manually |
 | **Augment** | Keep the human in the process but give them AI/tooling that makes them faster, more accurate, or more capable. | AI drafts the client report; PM reviews and personalizes instead of writing from scratch |
-| **Create New** | Build a capability that didn't exist before because it wasn't feasible without AI/automation. | Continuous project health monitoring that flags at-risk deliverables before anyone notices — no human could watch all projects simultaneously |
+| **Create New** | Build a capability that didn't exist before because it wasn't feasible without AI/automation. | Continuous project health monitoring that flags at-risk deliverables before anyone notices, since no human could watch all projects simultaneously |
 
 **Prioritization Criteria:**
 
 Each intervention is scored on four axes:
 
-1. **Friction Recovered** — How much of the measured friction (Phase 2) does this intervention eliminate? Directly derived from the Friction Table.
+1. **Friction Recovered.** How much of the measured friction (Phase 2) does this intervention eliminate? Directly derived from the Friction Table.
 
-2. **Implementation Complexity** — How hard is this to build and deploy? Considers technical difficulty, organizational change required, dependencies on other changes, and learning curve.
+2. **Implementation Complexity.** How hard is this to build and deploy? Considers technical difficulty, organizational change required, dependencies on other changes, and learning curve.
 
-3. **Risk of Inaction** — What happens if you don't do this? Some high-friction processes are stable and can wait. Others are actively degrading (key person might leave, client patience is running out, competitors are pulling ahead).
+3. **Risk of Inaction.** What happens if you don't do this? Some high-friction processes are stable and can wait. Others are actively degrading (key person might leave, client patience is running out, competitors are pulling ahead).
 
-4. **Cascade Potential** — Does this intervention unlock other interventions? Some changes are prerequisites for others. Some create momentum. A process that, once automated, makes three other automations trivial has high cascade potential.
+4. **Cascade Potential.** Does this intervention unlock other interventions? Some changes are prerequisites for others. Some create momentum. A process that, once automated, makes three other automations trivial has high cascade potential.
 
 **The Roadmap Structure:**
 
 The Intervention Roadmap is organized in three tiers:
 
-- **Tier 1: Quick Wins** — High friction recovered, low implementation complexity. Do these first. They build momentum and free capacity for harder changes.
-- **Tier 2: Strategic Investments** — High friction recovered, high implementation complexity. These are the big moves that require planning, resources, and organizational buy-in.
-- **Tier 3: Future Capabilities** — Create New interventions that aren't urgent but represent competitive advantages. Queue these after Tier 1 and 2 free up capacity.
+- **Tier 1: Quick Wins.** High friction recovered, low implementation complexity. Do these first. They build momentum and free capacity for harder changes.
+- **Tier 2: Strategic Investments.** High friction recovered, high implementation complexity. These are the big moves that require planning, resources, and organizational buy-in.
+- **Tier 3: Future Capabilities.** Create New interventions that aren't urgent but represent competitive advantages. Queue these after Tier 1 and 2 free up capacity.
 
 Each intervention in the roadmap includes:
 - The specific process it targets (traced back to Phase 1)
@@ -188,7 +188,7 @@ Its job is to produce an actionable, prioritized roadmap. Nothing more.
 Runs automatically after every phase. It adapts its checks to the phase it's reviewing:
 
 **After Phase 1 (Mapping):**
-- Completeness check: Are there obvious process categories missing? (Client delivery, internal ops, sales, finance, HR — most organizations have all of these)
+- Completeness check: Are there obvious process categories missing? (Client delivery, internal ops, sales, finance, HR; most organizations have all of these)
 - Classification consistency: Are similar processes classified the same way?
 - Gap plausibility: Do the detected gaps make sense given the organization's size and type?
 - Scope check: Did the mapper stay in observation mode, or did it leak into recommendations?
@@ -215,10 +215,10 @@ The critic doesn't fix issues. It flags them with specific remediation instructi
 Chains all phases automatically, runs the critic after each, and enforces human gates between phases. Can start from any phase if earlier work is done. Manages the engagement folder and state file.
 
 The orchestrator begins with intake:
-1. **Organization context** — What does this organization do? Size, industry, business model.
-2. **System access** — What systems can SONAR observe? (Project management, communication, CRM, financial, time tracking, calendar)
-3. **Margin pressure** — Where is the pain? What's driving the need to modernize? (This contextualizes the prioritization in Phase 3.)
-4. **Scope boundaries** — Are there departments, teams, or process categories to exclude?
+1. **Organization context.** What does this organization do? Size, industry, business model.
+2. **System access.** What systems can SONAR observe? (Project management, communication, CRM, financial, time tracking, calendar)
+3. **Margin pressure.** Where is the pain? What's driving the need to modernize? (This contextualizes the prioritization in Phase 3.)
+4. **Scope boundaries.** Are there departments, teams, or process categories to exclude?
 
 The orchestrator is a conductor, not a shortcut. Every phase runs fully, every review runs fully, every gate requires explicit sign-off.
 
@@ -253,7 +253,7 @@ The most visible process isn't always the most expensive. Organizations often au
 
 ### 3. Missing What Doesn't Exist Yet
 
-Automation conversations focus on existing processes. But some of the highest-value AI applications are capabilities that weren't possible before — continuous monitoring, real-time synthesis, proactive alerting. You can't "automate" these because there's no manual process to replace.
+Automation conversations focus on existing processes. But some of the highest-value AI applications are capabilities that weren't possible before: continuous monitoring, real-time synthesis, proactive alerting. You can't "automate" these because there's no manual process to replace.
 
 **SONAR fix:** The intervention taxonomy explicitly includes "Create New" alongside "Automate" and "Augment." Phase 1's gap detection surfaces where processes *should* exist but don't.
 

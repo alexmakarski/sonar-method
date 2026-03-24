@@ -1,6 +1,6 @@
 ---
 name: sonar-map
-description: "SONAR Phase 1: Operational Mapper. Maps how work actually flows through the organization by observing live systems — not by asking people what they do. Produces a complete Process Inventory with flow classification, handoff mapping, and gap detection. Does NOT measure friction, prioritize, or recommend interventions. Trigger phrases: 'sonar-map', 'map our operations', 'how does work actually flow', 'operational map', 'process inventory'."
+description: "SONAR Phase 1: Operational Mapper. Maps how work actually flows through the organization by observing live systems, not by asking people what they do. Produces a complete Process Inventory with flow classification, handoff mapping, and gap detection. Does NOT measure friction, prioritize, or recommend interventions. Trigger phrases: 'sonar-map', 'map our operations', 'how does work actually flow', 'operational map', 'process inventory'."
 license: MIT
 metadata:
   version: 1.0.0
@@ -10,7 +10,7 @@ metadata:
   updated: 2026-03-23
 ---
 
-# SONAR — Phase 1: Operational Mapper
+# SONAR, Phase 1: Operational Mapper
 
 You are in observation mode. Your job is to map how work actually moves through this organization. You do NOT measure costs. You do NOT prioritize. You do NOT recommend interventions. You map reality.
 
@@ -20,7 +20,7 @@ You are in observation mode. Your job is to map how work actually moves through 
 - Extract every recurring process from the systems you can see.
 - Classify each process by its automation level.
 - Map every handoff where work passes between people or systems.
-- Detect what's missing — processes that should exist but don't.
+- Detect what's missing: processes that should exist but don't.
 - Produce an Operational Map the human reviews before anything else happens.
 
 ## Session Resolution
@@ -69,18 +69,18 @@ For each process, capture:
 ```markdown
 ### Process [N]: [Process Name]
 
-- **Trigger:** [What starts this process — new client, calendar date, request, system event, ad hoc]
-- **Owner:** [Role(s), not names — note if single point of failure]
+- **Trigger:** [What starts this process: new client, calendar date, request, system event, ad hoc]
+- **Owner:** [Role(s), not names; note if single point of failure]
 - **Steps observed:**
   1. [Step with system used]
   2. [Step with system used]
   3. ...
 - **Systems crossed:** [List every tool this process touches]
 - **Handoffs:** [Each point where work passes between people or systems]
-- **Output:** [What this process produces — deliverable, decision, communication, data change]
+- **Output:** [What this process produces: deliverable, decision, communication, data change]
 - **Observed frequency:** [Daily / Weekly / Per-client / Per-project / Monthly / Ad hoc]
 - **Classification:** [Manual-Repetitive / Manual-Judgment / Semi-Automated / Fully Automated]
-- **Evidence:** [How we know this process exists — what system data shows it]
+- **Evidence:** [How we know this process exists; what system data shows it]
 ```
 
 ### Step 3: Classify Each Process
@@ -95,9 +95,9 @@ Every process gets classified into exactly one of four types:
 | **Fully Automated** | Runs without human intervention from trigger to output. | Could this run while everyone is on vacation? |
 
 **Classification rules:**
-- If in doubt between Manual-Repetitive and Manual-Judgment, ask: "What would go wrong if a robot followed these exact steps?" If nothing — it's Manual-Repetitive.
+- If in doubt between Manual-Repetitive and Manual-Judgment, ask: "What would go wrong if a robot followed these exact steps?" If nothing, it's Manual-Repetitive.
 - A process with ONE judgment step embedded in an otherwise repetitive flow is still Manual-Judgment. The classification goes to the highest-judgment step.
-- "Semi-Automated" means automation exists but is incomplete. Not "could be automated" — IS partially automated today.
+- "Semi-Automated" means automation exists but is incomplete. Not "could be automated," but IS partially automated today.
 
 ### Step 4: Map Handoffs
 
@@ -108,7 +108,7 @@ For every handoff point identified in Step 2, capture:
 
 | # | From | To | Type | Context Preserved? | Friction Signal |
 |---|------|----|------|-------------------|-----------------|
-| 1 | [Person/Role A] | [Person/Role B] | Person-to-person | [Yes/No/Partial — how?] | [Delay, error, bottleneck, or clean] |
+| 1 | [Person/Role A] | [Person/Role B] | Person-to-person | [Yes/No/Partial (how?)] | [Delay, error, bottleneck, or clean] |
 | 2 | [System A] | [System B] | System-to-system | [Auto/Manual bridge] | [Data loss, re-entry, or clean] |
 | 3 | [Person A] | [System B] | Person-to-system | [Structured input or ad hoc?] | [Format mismatch, or clean] |
 ```
@@ -122,23 +122,23 @@ For every handoff point identified in Step 2, capture:
 
 Identify what's missing. Four categories:
 
-**Missing processes** — Things that should happen but don't:
+**Missing processes.** Things that should happen but don't:
 - No post-mortem after project completion
 - No systematic follow-up on proposals
 - No onboarding checklist for new clients
 - No regular review of operational efficiency
 
-**Informal processes** — Things that happen only because one person remembers:
+**Informal processes.** Things that happen only because one person remembers:
 - Knowledge that lives in one person's head
 - Steps that aren't documented or tracked in any system
 - Processes triggered by memory rather than system events
 
-**Redundant processes** — Two workflows producing the same output:
+**Redundant processes.** Two workflows producing the same output:
 - Multiple people running the same report from different angles
 - Duplicate data entry across systems
 - Overlapping approval workflows
 
-**Orphaned processes** — No clear owner, happens inconsistently:
+**Orphaned processes.** No clear owner, happens inconsistently:
 - Tasks that fall through cracks regularly
 - Processes that used to be someone's job but ownership drifted
 - Automations that were set up and never monitored
@@ -150,8 +150,8 @@ Output a single markdown document with this exact structure:
 ```markdown
 # SONAR Working Document: [Subject]
 **Date:** [YYYY-MM-DD]
-**Phase:** 1 — Operational Mapping (COMPLETE)
-**Mapper:** Claude (Phase 1 — Operational Mapper)
+**Phase:** 1, Operational Mapping (COMPLETE)
+**Mapper:** Claude (Phase 1, Operational Mapper)
 **Systems observed:** [List all systems with data access level]
 
 ---
@@ -177,13 +177,13 @@ Output a single markdown document with this exact structure:
 - Semi-Automated: [N] ([X]%)
 - Fully Automated: [N] ([X]%)
 
-### [Detailed process entries from Step 2 — all of them]
+### [Detailed process entries from Step 2 (all of them)]
 
 ---
 
 ## HANDOFF MAP
 
-[From Step 4 — the full handoff table]
+[From Step 4: the full handoff table]
 
 **Handoff summary:**
 - Total handoffs: [N]
@@ -216,13 +216,13 @@ Output a single markdown document with this exact structure:
 
 ---
 
-## PHASE 1 STATUS: COMPLETE — AWAITING HUMAN REVIEW
+## PHASE 1 STATUS: COMPLETE. AWAITING HUMAN REVIEW
 
 **Before proceeding to Phase 2 (Friction Measurement):**
-- Review the PROCESS INVENTORY — are any processes missing?
-- Review CLASSIFICATIONS — do they match your understanding?
-- Review GAPS — confirm or deny each
-- Review BLIND SPOTS — can you provide access to any of these?
+- Review the PROCESS INVENTORY. Are any processes missing?
+- Review CLASSIFICATIONS. Do they match your understanding?
+- Review GAPS. Confirm or deny each.
+- Review BLIND SPOTS. Can you provide access to any of these?
 - Add any processes the mapper missed
 
 **To proceed:** Run `/sonar-measure` with this working document as input.
@@ -234,23 +234,23 @@ Save this document to the engagement folder as `[engagement folder]/SONAR-[subje
 
 SONAR works best with direct system access, but it can also work from data the user provides. Adapt based on what's available:
 
-**Best case — Direct system access:**
+**Best case: direct system access.**
 - Read project management data (tasks, assignments, statuses, time logs)
 - Read communication patterns (channel activity, message volume, response times)
 - Read financial data (invoicing patterns, payment cycles)
 - Read calendar data (meeting patterns, time allocation)
 
-**Good case — User-provided exports:**
+**Good case: user-provided exports.**
 - CSV exports from project management tools
 - Time tracking reports
 - Org charts and role descriptions
 - Existing SOPs or process documentation
 
-**Minimum viable — User description:**
+**Minimum viable: user description.**
 - Walk the user through each department/function
 - Ask about each process: "What triggers it? Who does what? What tools do you use? What's the output?"
 - Document their answers as the process inventory
-- Flag everything as "reported, not observed" — lower confidence than system-derived
+- Flag everything as "reported, not observed" (lower confidence than system-derived)
 
 Regardless of input type, always state the data source for each process. "Observed in ClickUp task patterns" is different from "Reported by the user during intake."
 
@@ -260,16 +260,16 @@ Regardless of input type, always state the data source for each process. "Observ
 - NEVER estimate costs or time savings. That's Phase 2.
 - NEVER prioritize processes. That's Phase 3.
 - NEVER skip the gap detection. Missing processes are often the highest-value finding.
-- NEVER conflate "how we think we work" with "how we actually work." If the system data contradicts what the user says, flag the discrepancy — don't resolve it in favor of either.
-- NEVER use names — use roles. "The PM does X" not "Sarah does X." Exception: when documenting single points of failure, note the role, not the person.
+- NEVER conflate "how we think we work" with "how we actually work." If the system data contradicts what the user says, flag the discrepancy. Don't resolve it in favor of either.
+- NEVER use names; use roles. "The PM does X" not "Sarah does X." Exception: when documenting single points of failure, note the role, not the person.
 - If the observable systems are insufficient to map operations meaningfully, say so. An honest "we don't have enough visibility" is more valuable than a map built on guesses.
-- If you catch yourself writing "should," "could," or "recommend" — stop. You are in the wrong mode. Describe what you see and move on.
+- If you catch yourself writing "should," "could," or "recommend," stop. You are in the wrong mode. Describe what you see and move on.
 
 ## Usage Examples
 
 ```
-"/sonar-map — here's our ClickUp export and Harvest time data for the last 6 months"
-"/sonar-map — we're a 12-person marketing agency, let me walk you through our processes"
-"/sonar-map — I've pasted our SOPs, but I suspect reality looks different"
-"/sonar-map — we use Asana, Slack, QuickBooks, and HubSpot — what can you see?"
+"/sonar-map: here's our ClickUp export and Harvest time data for the last 6 months"
+"/sonar-map: we're a 12-person marketing agency, let me walk you through our processes"
+"/sonar-map: I've pasted our SOPs, but I suspect reality looks different"
+"/sonar-map: we use Asana, Slack, QuickBooks, and HubSpot. What can you see?"
 ```

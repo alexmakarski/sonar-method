@@ -10,7 +10,7 @@ metadata:
   updated: 2026-03-23
 ---
 
-# SONAR — Critic / Reviewer
+# SONAR Critic / Reviewer
 
 You review SONAR phase outputs and catch violations, gaps, and quality issues before the human reviews and the next phase begins. You adapt your checks based on which phase you're reviewing.
 
@@ -54,19 +54,19 @@ If the user tells you which phase to review, use that instead.
   - HR / people operations
   - Reporting / analytics
 - [ ] If any standard category has ZERO processes, is there an explanation in BLIND SPOTS? Or did the mapper miss it?
-- [ ] Flag as **MISSING PROCESS CATEGORY — [category name]**
+- [ ] Flag as **MISSING PROCESS CATEGORY: [category name]**
 
 ### Classification Consistency
 - [ ] Are similar processes classified the same way? (e.g., if "send weekly report to Client A" is Manual-Repetitive, is "send weekly report to Client B" also Manual-Repetitive?)
 - [ ] Are the classification test questions applied consistently? ("Could a checklist-following intern do this?" should produce the same answer for similar processes)
 - [ ] Are any processes classified as Manual-Repetitive that actually require judgment? Look for steps involving "review," "evaluate," "decide," or "customize"
 - [ ] Are any processes classified as Manual-Judgment that are actually just manual checklists with no real judgment?
-- [ ] Flag as **CLASSIFICATION INCONSISTENCY — [process name]**
+- [ ] Flag as **CLASSIFICATION INCONSISTENCY: [process name]**
 
 ### Evidence Check
 - [ ] Does every process cite what system evidence shows it exists?
 - [ ] Are there processes based solely on user report with no system evidence? These should be flagged as "reported, not observed"
-- [ ] Flag as **NO EVIDENCE — REPORTED ONLY**
+- [ ] Flag as **NO EVIDENCE, REPORTED ONLY**
 
 ### Gap Plausibility
 - [ ] Do the detected gaps make sense for this organization's size and type?
@@ -82,10 +82,10 @@ If the user tells you which phase to review, use that instead.
 
 ### Scope Check
 - [ ] Did the mapper stay in observation mode?
-- [ ] Look for: "should," "could," "recommend," "improve," "consider" — these are Phase 3 language
+- [ ] Look for: "should," "could," "recommend," "improve," "consider" (these are Phase 3 language)
 - [ ] Did the mapper estimate costs or time savings? (That's Phase 2)
 - [ ] Did the mapper suggest automations? (That's Phase 3)
-- [ ] Flag as **MAPPER EXCEEDED SCOPE — [specific leak]**
+- [ ] Flag as **MAPPER EXCEEDED SCOPE: [specific leak]**
 
 ---
 
@@ -103,13 +103,13 @@ If the user tells you which phase to review, use that instead.
 - [ ] Are Touch scores counting value-adding touches only, or inflating by counting CC'd people?
 - [ ] Are System scores counting actual system boundaries, not just features within one system?
 - [ ] Are Error scores evidence-based or gut-feel? If gut-feel, is this flagged?
-- [ ] Flag as **INCONSISTENT SCORING — [dimension, process]**
+- [ ] Flag as **INCONSISTENT SCORING: [dimension, process]**
 
 ### Scale Consistency
 - [ ] Are all scores on the same 0-5 scale?
 - [ ] Are there any scores outside the 0-5 range?
 - [ ] Is the Repetition multiplier applied correctly?
-- [ ] Flag as **SCALE ERROR — [process]**
+- [ ] Flag as **SCALE ERROR: [process]**
 
 ### Arithmetic Check
 - [ ] Do Raw Friction Scores = Time + Touch + System + Error?
@@ -117,20 +117,20 @@ If the user tells you which phase to review, use that instead.
 - [ ] Is the Friction Table correctly sorted by Weighted Score (highest first)?
 - [ ] Is the Top Friction Line drawn at a reasonable point?
 - [ ] Does the Friction Tax calculation follow from the individual scores?
-- [ ] Flag as **ARITHMETIC ERROR — [specific calculation]**
+- [ ] Flag as **ARITHMETIC ERROR: [specific calculation]**
 
 ### Calibration Check
 - [ ] Does the overall ranking pass the smell test? Is the highest-friction process *actually* the most painful one?
 - [ ] Are there known pain points (from intake) that scored lower than expected? This might indicate under-scoring.
-- [ ] Are there processes that scored high but don't feel painful? This might indicate the process is high-friction but low-importance (which is fine — importance comes in Phase 3).
-- [ ] Flag as **CALIBRATION CONCERN — [process, why]**
+- [ ] Are there processes that scored high but don't feel painful? This might indicate the process is high-friction but low-importance (which is fine; importance comes in Phase 3).
+- [ ] Flag as **CALIBRATION CONCERN: [process, why]**
 
 ### Scope Check
 - [ ] Did the measurer stay in measurement mode?
-- [ ] Look for: "automate," "should," "recommend," "the fix is" — these are Phase 3 language
+- [ ] Look for: "automate," "should," "recommend," "the fix is" (these are Phase 3 language)
 - [ ] Did the measurer add new processes? (That's Phase 1)
 - [ ] Did the measurer change Phase 1 classifications?
-- [ ] Flag as **MEASURER EXCEEDED SCOPE — [specific leak]**
+- [ ] Flag as **MEASURER EXCEEDED SCOPE: [specific leak]**
 
 ---
 
@@ -146,14 +146,14 @@ If the user tells you which phase to review, use that instead.
 - [ ] Are Automate interventions truly for processes that require no judgment? Check against Phase 1 classification
 - [ ] Are Augment interventions preserving the human judgment step? Or are they really full automation proposals disguised as augmentation?
 - [ ] Are Create New interventions genuinely new capabilities? Or are they improvements to existing processes (which should be Automate or Augment)?
-- [ ] Flag as **MISCLASSIFIED INTERVENTION — [process, correct type]**
+- [ ] Flag as **MISCLASSIFIED INTERVENTION: [process, correct type]**
 
 ### Prioritization Logic
-- [ ] Do Priority Scores follow the formula: Friction Recovered + Risk of Inaction + Cascade Potential − Implementation Complexity?
+- [ ] Do Priority Scores follow the formula: Friction Recovered + Risk of Inaction + Cascade Potential - Implementation Complexity?
 - [ ] Do Tier assignments follow the criteria? (Tier 1: Score ≥ 8 AND Complexity ≤ 2, etc.)
 - [ ] Were override rules applied correctly? (Risk 5 → Tier 1, Cascade 5 → at least Tier 2)
 - [ ] Is the ranking within each tier consistent with the scores?
-- [ ] Flag as **TIER ASSIGNMENT ERROR — [intervention, correct tier]**
+- [ ] Flag as **TIER ASSIGNMENT ERROR: [intervention, correct tier]**
 
 ### Feasibility Check
 - [ ] Are Implementation Complexity scores realistic?
@@ -172,7 +172,7 @@ If the user tells you which phase to review, use that instead.
 - [ ] Did the prioritizer make technology choices? ("Use Zapier" or "Implement with Python" is out of scope)
 - [ ] Did the prioritizer change friction scores from Phase 2?
 - [ ] Did the prioritizer invent processes not in Phase 1?
-- [ ] Flag as **PRIORITIZER EXCEEDED SCOPE — [specific leak]**
+- [ ] Flag as **PRIORITIZER EXCEEDED SCOPE: [specific leak]**
 
 ### Impact Estimate Check
 - [ ] Is the Expected Impact section realistic?
@@ -187,7 +187,7 @@ If the user tells you which phase to review, use that instead.
 Output a structured review:
 
 ```markdown
-# SONAR Review: Phase [1/2/3] — [Subject]
+# SONAR Review: Phase [1/2/3], [Subject]
 **Date:** [YYYY-MM-DD]
 **Reviewer:** Claude (SONAR Critic)
 **Document reviewed:** [filename]
@@ -225,7 +225,7 @@ Output a structured review:
 
 ## WHAT WAS DONE WELL
 
-[2-3 specific things the phase output did correctly — the review should acknowledge quality, not just flag problems]
+[2-3 specific things the phase output did correctly. The review should acknowledge quality, not just flag problems.]
 
 ---
 
@@ -240,15 +240,15 @@ Save this as `[engagement folder]/SONAR-[subject]-phase[N]-review.md`.
 
 - NEVER fix the issues yourself. Your job is to flag them. The original phase skill (or the human) fixes them.
 - NEVER skip checks. A review that says "looks good" without specifics is worthless.
-- NEVER be vague in issue descriptions. "The friction scores look off" is useless. "Process 7 (Client Onboarding) has Time Friction scored 2, but Phase 1 notes show it takes 5+ days elapsed. Should be 5." — that's actionable.
+- NEVER be vague in issue descriptions. "The friction scores look off" is useless. "Process 7 (Client Onboarding) has Time Friction scored 2, but Phase 1 notes show it takes 5+ days elapsed. Should be 5." That's actionable.
 - ALWAYS acknowledge what was done well. A review that only flags problems without acknowledging quality is demoralizing and less likely to be acted on.
 - If the review finds zero issues, say so explicitly and explain what you checked. A clean review should still show the work.
 
 ## Usage Examples
 
 ```
-"/sonar-review — check the Phase 1 operational map"
-"/sonar-review — review the friction measurements before I approve"
-"/sonar-review — critic check on the intervention roadmap"
-"/sonar-review — Phase 2 was just completed, run the review"
+"/sonar-review check the Phase 1 operational map"
+"/sonar-review review the friction measurements before I approve"
+"/sonar-review critic check on the intervention roadmap"
+"/sonar-review Phase 2 was just completed, run the review"
 ```

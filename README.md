@@ -45,13 +45,13 @@ The orchestrator walks you through intake, operational mapping, friction measure
 /sonar-map
 ```
 
-This gives you the operational map — how work actually flows, where humans are doing machine work, where processes are missing entirely. No measurement, no prioritization. Just the map.
+This gives you the operational map: how work actually flows, where humans are doing machine work, where processes are missing entirely. No measurement, no prioritization. Just the map.
 
 ## The core question
 
 Every SONAR engagement starts with one question: **"Where is your margin going?"**
 
-The answer isn't always where you think. SONAR doesn't ask people what they do — it observes what actually happens across connected systems. The gap between "how we think we work" and "how we actually work" is where the margin lives.
+The answer isn't always where you think. SONAR doesn't ask people what they do. It observes what actually happens across connected systems. The gap between "how we think we work" and "how we actually work" is where the margin lives.
 
 ## How SONAR relates to SEAL
 
@@ -79,4 +79,4 @@ SEAL is a forensic auditor working from documents. SONAR is an operational diagn
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).

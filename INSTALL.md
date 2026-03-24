@@ -41,11 +41,11 @@ You should see the SONAR orchestrator ask for intake information. If you see "sk
 
 | Skill | What It Does |
 |-------|-------------|
-| `sonar-run` | Orchestrator — chains all phases, enforces quality gates |
-| `sonar-map` | Phase 1 — maps how work actually flows through the organization |
-| `sonar-measure` | Phase 2 — measures friction cost across five dimensions |
-| `sonar-prioritize` | Phase 3 — ranks interventions by impact and feasibility |
-| `sonar-review` | Critic — runs after every phase automatically |
+| `sonar-run` | Orchestrator: chains all phases, enforces quality gates |
+| `sonar-map` | Phase 1. Maps how work actually flows through the organization |
+| `sonar-measure` | Phase 2. Measures friction cost across five dimensions |
+| `sonar-prioritize` | Phase 3. Ranks interventions by impact and feasibility |
+| `sonar-review` | Critic. Runs after every phase automatically |
 
 ## How to Use
 
@@ -53,13 +53,13 @@ You should see the SONAR orchestrator ask for intake information. If you see "sk
 ```
 /sonar-run
 ```
-Follow the prompts. The orchestrator will walk you through intake, operational mapping, friction measurement, and intervention prioritization — with quality reviews and approval gates between each phase.
+Follow the prompts. The orchestrator will walk you through intake, operational mapping, friction measurement, and intervention prioritization, with quality reviews and approval gates between each phase.
 
 ### Quick operational scan (Phase 1 only):
 ```
 /sonar-map
 ```
-This gives you the Operational Map — every process inventoried, classified, and gap-checked. No measurement, no prioritization. Hand the map to your team and have the conversation.
+This gives you the Operational Map: every process inventoried, classified, and gap-checked. No measurement, no prioritization. Hand the map to your team and have the conversation.
 
 ### Individual phases:
 Any skill can be run standalone. Use `/sonar-measure` on an existing map, or `/sonar-prioritize` on existing measurements.
