@@ -1,0 +1,15 @@
+{
+  "name": "sonar-method",
+  "owner": {
+    "name": "Alex Makarski",
+    "url": "https://github.com/alexmakarski"
+  },
+  "plugins": [
+    {
+      "name": "sonar",
+      "source": "../",
+      "description": "SONAR: multi-phase operational diagnostics for Claude Code",
+      "version": "1.0.1"
+    }
+  ]
+}
