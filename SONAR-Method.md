@@ -6,6 +6,8 @@ SONAR is a multi-phase operational diagnostics method that maps how work actuall
 
 It is not a prompt. It is a *workflow architecture* built from role-locked phases that mirror a diagnostic progression. The mapper observing processes cannot recommend interventions. The measurer quantifying costs cannot prioritize them. The prioritizer ranking interventions cannot invent processes the mapper didn't find.
 
+For the intellectual lineage behind each phase -- where the ideas come from, where they diverge from their ancestors, and why the combination matters -- see [SONAR-DNA.md](SONAR-DNA.md).
+
 ---
 
 ## The Core Workflow
