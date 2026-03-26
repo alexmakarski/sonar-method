@@ -1,13 +1,13 @@
 ---
 name: sonar-run
-description: "SONAR Orchestrator. Chains all SONAR phases automatically with critic review after each phase and human approval gates between phases. Runs the full diagnostic workflow: map → measure → prioritize. Can start from any phase if earlier phases are already complete. Trigger phrases: 'sonar-run', 'run sonar', 'run the full diagnostic', 'operational diagnostic'."
+description: "SONAR Orchestrator. Chains all SONAR phases automatically with critic review after each phase and human approval gates between phases. Runs the full diagnostic workflow: map → measure → prioritize → implement. Can start from any phase if earlier phases are already complete. Trigger phrases: 'sonar-run', 'run sonar', 'run the full diagnostic', 'operational diagnostic'."
 license: MIT
 metadata:
-  version: 1.0.0
+  version: 1.0.1
   author: Alex Makarski
   category: operations
   domain: operational-diagnostics
-  updated: 2026-03-23
+  updated: 2026-03-26
 ---
 
 # SONAR Orchestrator
@@ -30,6 +30,8 @@ Review 2: Critic checks Phase 2
 Phase 3: Intervention Prioritization (sonar-prioritize)
     ↓ automatic
 Review 3: Critic checks Phase 3
+    ↓ HUMAN GATE: approve or revise
+Phase 4: Implementation Planning (sonar-implement)
     ↓ HUMAN GATE: approve or revise
 COMPLETE
 ```
@@ -242,16 +244,57 @@ TIER 3: FUTURE CAPABILITIES ([N] interventions):
 [List with type and target process]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-HUMAN GATE. Final review:
+HUMAN GATE. Please review and respond:
 
-1. "approved" = SONAR run complete, roadmap is ready
+1. "approved" = proceed to Phase 4 (Implementation Planning)
 2. "revise [specific feedback]" = I'll fix the roadmap
+3. "stop" = pause here, roadmap is done, skip implementation plan
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-### Step 5: Complete
+**STOP HERE.** Wait for user response.
 
-When the user approves Phase 3:
+### Step 5: Phase 4, Implementation Planning
+
+Execute the `/sonar-implement` logic:
+- Inventory all inputs (working document, any supplementary analysis, build documents)
+- Identify fires requiring immediate action
+- Sequence interventions into phased execution blocks
+- Assign owners to every action
+- Define leading and lagging success metrics
+- Surface decisions the sponsor needs to make
+- Build the file index
+- Save to `[engagement folder]/SONAR-[subject]-implementation-plan.md`
+
+Then present:
+
+```
+PHASE 4 COMPLETE. Implementation Plan done.
+
+File saved to [engagement folder]:
+- SONAR-[subject]-implementation-plan.md
+
+Plan structure:
+- Phase 0 Fires: [N] immediate actions
+- Phase 1 Foundation (Weeks 1-2): [N] actions
+- Phase 2 Embed (Weeks 3-4): [N] actions
+- Phase 3 Defend (Weeks 5-8): [N] actions
+- Phase 4 Grow (Weeks 9-12): [N] actions
+- Decisions pending: [N]
+- Leading indicators: [N]
+- Lagging indicators: [N]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HUMAN GATE. Final review:
+
+1. "approved" = SONAR run complete
+2. "revise [specific feedback]" = I'll fix the plan
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### Step 6: Complete
+
+When the user approves Phase 4 (or Phase 3 if they chose to stop):
 
 ```
 SONAR DIAGNOSTIC COMPLETE
@@ -259,7 +302,7 @@ SONAR DIAGNOSTIC COMPLETE
 Subject: [subject]
 Type: [organization type]
 Margin pressure: [stated pain]
-Phases completed: 1 → 2 → 3
+Phases completed: 1 → 2 → 3 → 4
 Reviews passed: [N]/[N]
 
 Key findings:
@@ -273,6 +316,7 @@ All files in [engagement folder]:
 - SONAR-[subject]-phase1-review.md
 - SONAR-[subject]-phase2-review.md
 - SONAR-[subject]-phase3-review.md
+- SONAR-[subject]-implementation-plan.md
 ```
 
 ## Resuming a Paused Run

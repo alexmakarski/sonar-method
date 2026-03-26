@@ -1,10 +1,10 @@
-# SONAR v1.0.1
+# SONAR v1.1.0
 
 **Systematic Operational Navigation & Automation Readiness**
 
-SONAR is a multi-phase operational diagnostics method for Claude Code that maps how work actually flows through an organization, measures what friction costs, and identifies where AI automation, augmentation, or entirely new capabilities will have the highest impact.
+SONAR is a multi-phase operational diagnostics method for Claude Code that maps how work actually flows through an organization, measures what friction costs, identifies where to intervene, and produces an executable project plan.
 
-Feed it access to your live systems. It maps every process. Then it quantifies the operational tax you're paying on each one and tells you which 3-5 interventions will reclaim the most margin. With measurements, not opinions.
+Feed it access to your live systems. It maps every process, quantifies the operational tax on each one, tells you which interventions will reclaim the most margin, and gives you the project plan to execute against. Diagnosis through implementation, not just a report.
 
 ## How it works
 
@@ -12,14 +12,15 @@ Feed it access to your live systems. It maps every process. Then it quantifies t
 Phase 1: Operational Mapping
 Phase 2: Friction Measurement
 Phase 3: Intervention Prioritization
+Phase 4: Implementation Planning
 ```
 
-Each phase is role-locked. The mapper can't recommend. The measurer can't prioritize. The prioritizer can't invent findings the mapper didn't surface. An automated critic reviews each phase before a human gate lets the next one proceed.
+Each phase is role-locked. The mapper can't recommend. The measurer can't prioritize. The prioritizer can't invent findings the mapper didn't surface. The implementation planner can't invent interventions the prioritizer didn't recommend. An automated critic reviews each phase before a human gate lets the next one proceed.
 
 ## What's inside
 
-- **5 skills** that install into Claude Code
-- **3 core phases** that progress from observation to measurement to action
+- **6 skills** that install into Claude Code
+- **4 core phases** that progress from observation to measurement to prioritization to execution
 - **1 orchestrator** that chains everything with quality gates
 - **1 critic** that reviews every phase automatically
 
@@ -39,7 +40,7 @@ Open Claude Code in any project directory and run:
 /sonar-run
 ```
 
-The orchestrator walks you through intake, operational mapping, friction measurement, and intervention prioritization. For a lighter touch, run just the map:
+The orchestrator walks you through intake, operational mapping, friction measurement, intervention prioritization, and implementation planning. For a lighter touch, run just the map:
 
 ```
 /sonar-map
@@ -63,13 +64,13 @@ SONAR and SEAL are sibling products with different epistemic positions:
 | **Input** | Submitted evidence | Direct system observation |
 | **Trust model** | Trust nothing, verify everything | Trust the data, question the patterns |
 | **Core question** | "What's actually true here?" | "Where is the margin going?" |
-| **Output** | Verified findings + strategic recommendations | Automation/augmentation roadmap |
+| **Output** | Verified findings + strategic recommendations | Automation/augmentation roadmap + project plan |
 
 SEAL is a forensic auditor working from documents. SONAR is an operational diagnostician with direct access to the patient. They can inform each other but neither requires the other.
 
 ## Read more
 
-[SONAR-Method.md](SONAR-Method.md) is the full methodology document covering the architecture, all three phases, failure modes SONAR prevents, and the taxonomy of interventions.
+[SONAR-Method.md](SONAR-Method.md) is the full methodology document covering the architecture, all four phases, failure modes SONAR prevents, and the taxonomy of interventions.
 
 ## Requirements
 

@@ -1,13 +1,13 @@
 ---
 name: sonar-review
-description: "SONAR Critic: Reviews output from any SONAR phase (map, measure, or prioritize) and checks it against that phase's constraints. Catches missing processes, inconsistent classifications, unsupported friction scores, interventions without evidence trails, and other phase violations. Run after each phase before proceeding to the next. Trigger phrases: 'sonar-review', 'review the map', 'check this phase', 'critic'."
+description: "SONAR Critic: Reviews output from any SONAR phase (map, measure, prioritize, or implement) and checks it against that phase's constraints. Catches missing processes, inconsistent classifications, unsupported friction scores, interventions without evidence trails, unowned actions, and other phase violations. Run after each phase before proceeding to the next. Trigger phrases: 'sonar-review', 'review the map', 'check this phase', 'critic'."
 license: MIT
 metadata:
-  version: 1.0.0
+  version: 1.0.1
   author: Alex Makarski
   category: operations
   domain: operational-diagnostics
-  updated: 2026-03-23
+  updated: 2026-03-26
 ---
 
 # SONAR Critic / Reviewer
@@ -33,7 +33,8 @@ Read the working document from the engagement folder (`[engagement folder]/SONAR
 
 - If document contains PROCESS INVENTORY but no FRICTION TABLE → reviewing **Phase 1 (Operational Mapping)**
 - If document contains both PROCESS INVENTORY and FRICTION TABLE but no INTERVENTION ROADMAP → reviewing **Phase 2 (Friction Measurement)**
-- If document contains INTERVENTION ROADMAP → reviewing **Phase 3 (Intervention Prioritization)**
+- If document contains INTERVENTION ROADMAP but no implementation plan file exists → reviewing **Phase 3 (Intervention Prioritization)**
+- If an implementation plan file exists (`SONAR-*-implementation-plan.md`) → reviewing **Phase 4 (Implementation Planning)**
 
 If the user tells you which phase to review, use that instead.
 
@@ -182,12 +183,52 @@ If the user tells you which phase to review, use that instead.
 
 ---
 
+## Phase 4 Review: Implementation Planning
+
+### Traceability
+- [ ] Does every action trace back to an intervention in the Phase 3 roadmap or a supplementary build document?
+- [ ] Are there actions that don't connect to any diagnosed problem? Flag as **ACTION WITHOUT EVIDENCE**
+- [ ] Are there Phase 3 interventions that have NO corresponding action in the plan? Flag as **INTERVENTION NOT IMPLEMENTED**
+
+### Owner Assignment
+- [ ] Does every action have a named owner?
+- [ ] Are owners realistic? (Not assigning 10 actions to the same person in the same week)
+- [ ] Are there actions assigned to people who weren't mentioned in the engagement? Flag as **UNKNOWN OWNER**
+- [ ] Flag as **OVERLOADED OWNER: [name, action count]**
+
+### Sequencing
+- [ ] Do phase dependencies make sense? (Phase 2 actions don't depend on Phase 3 outputs)
+- [ ] Are fires genuinely urgent? Check each Phase 0 item against the diagnostic evidence.
+- [ ] Are there actions in later phases that should be fires? (e.g., a critical client at risk buried in Phase 3)
+- [ ] Flag as **SEQUENCING ERROR** or **FIRE MISSED**
+
+### Completeness
+- [ ] Does the plan include success metrics (both leading and lagging)?
+- [ ] Does every metric have a baseline, target, and measurement method?
+- [ ] Does the plan include a decision log with deadlines?
+- [ ] Does the plan include a file index linking to source documents?
+- [ ] Flag as **MISSING SECTION: [section name]**
+
+### Feasibility
+- [ ] Are timelines realistic given the organization's capacity?
+- [ ] Are there too many actions in Weeks 1-2? (Common failure mode: front-loading the plan)
+- [ ] Are effort estimates provided for each action?
+- [ ] Flag as **TIMELINE UNREALISTIC** or **EFFORT MISSING**
+
+### Scope Check
+- [ ] Did the planner invent interventions not in the Phase 3 roadmap?
+- [ ] Did the planner make technology choices?
+- [ ] Did the planner change priorities from Phase 3?
+- [ ] Flag as **PLANNER EXCEEDED SCOPE: [specific leak]**
+
+---
+
 ## Step 3: Produce the Review Report
 
 Output a structured review:
 
 ```markdown
-# SONAR Review: Phase [1/2/3], [Subject]
+# SONAR Review: Phase [1/2/3/4], [Subject]
 **Date:** [YYYY-MM-DD]
 **Reviewer:** Claude (SONAR Critic)
 **Document reviewed:** [filename]

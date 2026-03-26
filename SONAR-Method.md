@@ -23,6 +23,8 @@ Phase 3: Intervention Prioritization (sonar-prioritize)
     ↓ (automatic)
 Review 3: Critic checks Phase 3
     ↓ HUMAN GATE: approve or revise
+Phase 4: Implementation Planning (sonar-implement)
+    ↓ HUMAN GATE: approve or revise
 COMPLETE
 ```
 
@@ -183,6 +185,38 @@ Its job is to produce an actionable, prioritized roadmap. Nothing more.
 
 ---
 
+### Phase 4: Implementation Planning (`/sonar-implement`)
+
+The implementation planner's job is to answer: **"How do we execute this, in what order, and how do we know it's working?"**
+
+Phase 3 produces a roadmap -- a ranked list of interventions with priorities and dependencies. But a roadmap is not a project plan. It doesn't tell you what to do Monday morning. It doesn't assign owners. It doesn't define what "done" looks like. It doesn't surface the decisions the sponsor needs to make before execution can start.
+
+Phase 4 bridges that gap. It takes the Intervention Roadmap, plus any supplementary analysis done during the engagement (transcript analysis, revenue data, build documents), and produces a single execution document the organization works from.
+
+**The Implementation Plan Structure:**
+
+1. **Fires (Phase 0).** Anything that will cost revenue or relationships if not addressed this week. These sit outside the regular timeline.
+2. **Foundation (Weeks 1-2).** Actions that establish infrastructure for everything else: presenting frameworks, seeding tracking systems, starting pilots, making quick structural changes.
+3. **Embed (Weeks 3-4).** Expand pilots, start behavioral change, make deferred decisions.
+4. **Defend (Weeks 5-8).** Activate defensive systems, automate what was manual, run first formal reviews.
+5. **Grow (Weeks 9-12).** Shift from defense to offense: new pricing, new positioning, expanded capabilities.
+
+Every action in the plan includes: what happens, who owns it, what effort it requires, what deliverable it produces, and which source document it draws from.
+
+**Success Metrics:** The plan defines leading indicators (weekly behavioral measures that predict outcomes) and lagging indicators (monthly business outcomes). Each metric has a baseline, a 90-day target, and a measurement method.
+
+**Decision Log:** Every decision the sponsor needs to make during execution, with deadlines and context.
+
+**The implementation planner is prohibited from:**
+- Inventing interventions not in the Phase 3 roadmap or supplementary builds
+- Changing friction measurements or priority scores from earlier phases
+- Making technology choices
+- Setting deadlines without knowing capacity constraints
+
+Its job is to produce a plan the organization can execute against. Nothing more.
+
+---
+
 ## The Critic (`/sonar-review`)
 
 Runs automatically after every phase. It adapts its checks to the phase it's reviewing:
@@ -312,4 +346,5 @@ Use direct intervention when: **you already know what's broken and how to fix it
 | `/sonar-map` | Phase 1: Operational Mapping |
 | `/sonar-measure` | Phase 2: Friction Measurement |
 | `/sonar-prioritize` | Phase 3: Intervention Prioritization |
+| `/sonar-implement` | Phase 4: Implementation Planning |
 | `/sonar-review` | Critic: runs after every phase automatically |
