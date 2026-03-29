@@ -17,14 +17,21 @@ cd /path/to/SONAR
 ./install-sonar.sh
 ```
 
-That's it. The script copies all 5 SONAR skills into `~/.claude/skills/`.
+That's it. The script copies 5 SONAR skills into `~/.claude/skills/` and 1 agent into `~/.claude/agents/`.
 
 ## Manual Install
 
-If the script doesn't work, copy each folder from `skills/` into `~/.claude/skills/`:
+If the script doesn't work, copy skills and agents manually:
 
 ```bash
 cp -r skills/sonar-* ~/.claude/skills/
+cp -r agents/sonar-* ~/.claude/agents/
+```
+
+Also remove the old `sonar-review` skill if it exists (it's now an agent):
+
+```bash
+rm -rf ~/.claude/skills/sonar-review
 ```
 
 ## Verify It Works
@@ -39,13 +46,21 @@ You should see the SONAR orchestrator ask for intake information. If you see "sk
 
 ## What Gets Installed
 
+**Skills** (installed to `~/.claude/skills/`):
+
 | Skill | What It Does |
 |-------|-------------|
 | `sonar-run` | Orchestrator: chains all phases, enforces quality gates |
 | `sonar-map` | Phase 1. Maps how work actually flows through the organization |
 | `sonar-measure` | Phase 2. Measures friction cost across five dimensions |
 | `sonar-prioritize` | Phase 3. Ranks interventions by impact and feasibility |
-| `sonar-review` | Critic. Runs after every phase automatically |
+| `sonar-implement` | Phase 4. Produces the executable implementation plan |
+
+**Agents** (installed to `~/.claude/agents/`):
+
+| Agent | What It Does |
+|-------|-------------|
+| `sonar-review` | Critic. Runs in isolation after every phase, evaluates with fresh eyes |
 
 ## How to Use
 
@@ -79,8 +94,9 @@ bash install-sonar.sh
 Check that the files landed in the right place:
 ```bash
 ls ~/.claude/skills/sonar-*
+ls ~/.claude/agents/sonar-*
 ```
-You should see 5 directories.
+You should see 5 skill directories and 1 agent directory.
 
 **Claude Code says "skill not found":**
 Restart Claude Code after installing. Some versions cache the skill list on startup.

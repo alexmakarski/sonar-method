@@ -1,4 +1,4 @@
-# SONAR v1.1.0
+# SONAR v2.0.0
 
 **Systematic Operational Navigation & Automation Readiness**
 
@@ -15,14 +15,14 @@ Phase 3: Intervention Prioritization
 Phase 4: Implementation Planning
 ```
 
-Each phase is role-locked. The mapper can't recommend. The measurer can't prioritize. The prioritizer can't invent findings the mapper didn't surface. The implementation planner can't invent interventions the prioritizer didn't recommend. An automated critic reviews each phase before a human gate lets the next one proceed.
+Each phase is role-locked. The mapper can't recommend. The measurer can't prioritize. The prioritizer can't invent findings the mapper didn't surface. The implementation planner can't invent interventions the prioritizer didn't recommend. An isolated critic agent reviews each phase before a human gate lets the next one proceed. The critic runs in a separate context -- it has never seen your conversation, only the output documents. This eliminates the bias that comes from evaluating work you helped create.
 
 ## What's inside
 
-- **6 skills** that install into Claude Code
+- **5 skills + 1 agent** that install into Claude Code
 - **4 core phases** that progress from observation to measurement to prioritization to execution
 - **1 orchestrator** that chains everything with quality gates
-- **1 critic** that reviews every phase automatically
+- **1 critic agent** that reviews every phase in isolation
 
 ## Install
 
