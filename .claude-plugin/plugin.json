@@ -1,7 +1,7 @@
 {
   "name": "sonar",
   "description": "SONAR: Systematic Operational Navigation & Automation Readiness — multi-phase operational diagnostics that maps how work flows, measures friction cost, and identifies highest-impact interventions.",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "author": {
     "name": "Alex Makarski"
   },
