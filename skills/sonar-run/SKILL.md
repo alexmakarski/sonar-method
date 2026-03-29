@@ -1,13 +1,13 @@
 ---
 name: sonar-run
-description: "SONAR Orchestrator. Chains all SONAR phases automatically with critic review after each phase and human approval gates between phases. Runs the full diagnostic workflow: map → measure → prioritize → implement. Can start from any phase if earlier phases are already complete. Trigger phrases: 'sonar-run', 'run sonar', 'run the full diagnostic', 'operational diagnostic'."
+description: "SONAR Orchestrator. Chains all SONAR phases automatically with critic review after each phase and human approval gates between phases. Runs the full diagnostic workflow: map -> measure -> prioritize -> implement. Can start from any phase if earlier phases are already complete. Trigger phrases: 'sonar-run', 'run sonar', 'run the full diagnostic', 'operational diagnostic'."
 license: MIT
 metadata:
-  version: 1.0.1
+  version: 1.1.0
   author: Alex Makarski
   category: operations
   domain: operational-diagnostics
-  updated: 2026-03-26
+  updated: 2026-03-28
 ---
 
 # SONAR Orchestrator
@@ -106,12 +106,12 @@ Execute the `/sonar-map` logic:
 
 **Immediately after Phase 1 completes, run the critic review (do NOT wait for user input):**
 
-Execute the `/sonar-review` logic for Phase 1:
-- Completeness check (process categories covered)
-- Classification consistency
-- Gap plausibility
-- Scope check (mapper stayed in observation mode)
-- Save review to `[engagement folder]/SONAR-[subject]-phase1-review.md`
+Spawn the `sonar-review` agent (NOT a skill -- it must run in isolation). Pass it:
+1. The working document: `[engagement folder]/SONAR-[subject]-working-doc.md`
+2. Phase identifier: "Phase 1"
+3. Engagement metadata: subject, organization type, margin pressure, scope boundaries
+
+The agent will run its Phase 1 checks and save the review to `[engagement folder]/SONAR-[subject]-phase1-review.md`.
 
 Then present both outputs to the user:
 
@@ -161,12 +161,12 @@ Execute the `/sonar-measure` logic:
 
 **Immediately after Phase 2 completes, run the critic review:**
 
-Execute the `/sonar-review` logic for Phase 2:
-- Source tracing (every score traces to a mapped process)
-- Dimension consistency
-- Arithmetic check
-- Scope check (measurer stayed in measurement mode)
-- Save review to `[engagement folder]/SONAR-[subject]-phase2-review.md`
+Spawn the `sonar-review` agent (NOT a skill -- it must run in isolation). Pass it:
+1. The working document: `[engagement folder]/SONAR-[subject]-working-doc.md` (contains both Phase 1 and Phase 2)
+2. Phase identifier: "Phase 2"
+3. Engagement metadata: subject, organization type, margin pressure, scope boundaries
+
+The agent will run its Phase 2 checks and save the review to `[engagement folder]/SONAR-[subject]-phase2-review.md`.
 
 Then present both outputs:
 
@@ -212,13 +212,12 @@ Execute the `/sonar-prioritize` logic:
 
 **Immediately after Phase 3 completes, run the critic review:**
 
-Execute the `/sonar-review` logic for Phase 3:
-- Evidence trail (every intervention traces to a measured process)
-- Classification accuracy
-- Prioritization logic
-- Feasibility check
-- Scope check
-- Save review to `[engagement folder]/SONAR-[subject]-phase3-review.md`
+Spawn the `sonar-review` agent (NOT a skill -- it must run in isolation). Pass it:
+1. The working document: `[engagement folder]/SONAR-[subject]-working-doc.md` (all phases)
+2. Phase identifier: "Phase 3"
+3. Engagement metadata: subject, organization type, margin pressure, scope boundaries
+
+The agent will run its Phase 3 checks and save the review to `[engagement folder]/SONAR-[subject]-phase3-review.md`.
 
 Then present:
 
