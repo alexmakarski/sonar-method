@@ -1,7 +1,7 @@
 ---
 name: sonar-review
 description: "SONAR Critic. Runs in isolation to review SONAR phase outputs with fresh eyes. Catches missing processes, inconsistent classifications, unsupported friction scores, interventions without evidence trails, unowned actions, and other phase violations. Spawned by the sonar-run orchestrator after each phase."
-version: 1.1.0
+version: 2.0.0
 author: Alex Makarski
 ---
 
