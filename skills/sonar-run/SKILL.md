@@ -3,7 +3,7 @@ name: sonar-run
 description: "SONAR Orchestrator. Chains all SONAR phases automatically with critic review after each phase and human approval gates between phases. Runs the full diagnostic workflow: map -> measure -> prioritize -> implement. Can start from any phase if earlier phases are already complete. Trigger phrases: 'sonar-run', 'run sonar', 'run the full diagnostic', 'operational diagnostic'."
 license: MIT
 metadata:
-  version: 2.0.0
+  version: 2.1.0
   author: Alex Makarski
   category: operations
   domain: operational-diagnostics

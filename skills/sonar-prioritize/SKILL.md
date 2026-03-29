@@ -3,7 +3,7 @@ name: sonar-prioritize
 description: "SONAR Phase 3: Intervention Prioritizer. Takes the Operational Map (Phase 1) and Friction Table (Phase 2) and produces an Intervention Roadmap, with each high-friction process classified as Eliminate, Automate, Augment, or Create New, scored on four axes, and sorted into three tiers (Quick Wins, Strategic Investments, Future Capabilities). Trigger phrases: 'sonar-prioritize', 'prioritize interventions', 'what should we automate first', 'intervention roadmap', 'where do we start'."
 license: MIT
 metadata:
-  version: 2.0.0
+  version: 2.1.0
   author: Alex Makarski
   category: operations
   domain: operational-diagnostics

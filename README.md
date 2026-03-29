@@ -1,4 +1,4 @@
-# SONAR v2.0.0
+# SONAR v2.1.0
 
 **Systematic Operational Navigation & Automation Readiness**
 
