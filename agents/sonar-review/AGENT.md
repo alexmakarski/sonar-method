@@ -1,7 +1,7 @@
 ---
 name: sonar-review
 description: "SONAR Critic. Runs in isolation to review SONAR phase outputs with fresh eyes. Catches missing processes, inconsistent classifications, unsupported friction scores, interventions without evidence trails, unowned actions, and other phase violations. Spawned by the sonar-run orchestrator after each phase."
-version: 2.0.0
+version: 2.1.0
 author: Alex Makarski
 ---
 
@@ -135,9 +135,12 @@ Determine which phase based on the phase identifier passed to you. If not explic
 - [ ] Are there high-friction processes (above the Top Friction Line) that have NO recommended intervention? Flag as **HIGH-FRICTION PROCESS IGNORED**
 
 ### Classification Accuracy
+- [ ] Are Eliminate interventions genuinely removable? Check that no downstream process depends on their output. Check that the "disappear test" holds: would anyone notice within 30 days?
+- [ ] Are there processes classified as Automate or Augment that should be Eliminate? If nobody consumes the output, automating it faster is still waste.
 - [ ] Are Automate interventions truly for processes that require no judgment? Check against Phase 1 classification
 - [ ] Are Augment interventions preserving the human judgment step? Or are they really full automation proposals disguised as augmentation?
 - [ ] Are Create New interventions genuinely new capabilities? Or are they improvements to existing processes (which should be Automate or Augment)?
+- [ ] Are Create New interventions from Step 5.5 grounded in data and systems the organization actually has? Or are they speculative?
 - [ ] Flag as **MISCLASSIFIED INTERVENTION: [process, correct type]**
 
 ### Prioritization Logic
@@ -165,6 +168,12 @@ Determine which phase based on the phase identifier passed to you. If not explic
 - [ ] Did the prioritizer change friction scores from Phase 2?
 - [ ] Did the prioritizer invent processes not in Phase 1?
 - [ ] Flag as **PRIORITIZER EXCEEDED SCOPE: [specific leak]**
+
+### AI-Native Capability Check (Step 5.5)
+- [ ] Did Phase 3 include a Step 5.5 generative pass? If not, flag as **MISSING AI-NATIVE CAPABILITY SCAN**
+- [ ] Are Step 5.5 capabilities grounded in data/systems the organization actually has? Flag speculative ones as **CAPABILITY REQUIRES DATA THAT DOESN'T EXIST**
+- [ ] Were Step 5.5 capabilities scored on the same four axes as all other interventions? Flag as **UNSCORED CAPABILITY** if not
+- [ ] Were Step 5.5 capabilities allowed to compete for any tier, or were they auto-demoted to Tier 3? Flag as **CREATE NEW AUTO-DEMOTED** if so
 
 ### Impact Estimate Check
 - [ ] Is the Expected Impact section realistic?

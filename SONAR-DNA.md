@@ -80,7 +80,13 @@ SONAR's **Friction Tax** (the estimated percentage of total operational capacity
 
 ## Phase 3: Intervention Prioritization
 
-### The Intervention Taxonomy: Automate / Augment / Create New
+### The Intervention Taxonomy: Eliminate / Automate / Augment / Create New
+
+**Eliminate → Muda (Lean Manufacturing / Taiichi Ohno)**
+
+The first principle of Lean is that the highest-leverage improvement is eliminating work that shouldn't exist. Ohno's seven wastes (muda) -- overproduction, waiting, transport, overprocessing, inventory, motion, defects -- all share a common ancestor: activity that consumes resources without creating value. The most efficient version of a wasteful process is not doing it at all.
+
+*Where SONAR diverges:* Lean's muda categories were designed for manufacturing floors. SONAR's Eliminate category targets knowledge-work processes that persist because of institutional inertia: reports nobody reads, approvals for departed managers, workarounds for problems that were solved two tools ago. The "disappear test" (would anyone notice within 30 days?) is SONAR's operationalization of Ohno's principle.
 
 **Automate and Augment → Thomas Davenport's Process Innovation**
 
@@ -144,6 +150,7 @@ This is what the steam-era factory owners eventually learned: the technology isn
 | Repetition Friction | Frequency-weighted waste (Six Sigma) | None | Applied to untracked knowledge-work patterns |
 | Error Friction | Cost of Poor Quality (Juran) | None | Operational error rates, not product defect rates |
 | Friction Tax | *No single ancestor* | All five dimensions | Composite metric: % of capacity consumed by friction |
+| Eliminate | Muda / Seven Wastes (Ohno, Lean) | None | Applied to knowledge-work inertia, not manufacturing waste |
 | Automate / Augment | Process Innovation (Davenport), Informate (Zuboff) | None | Updated for AI capability, not just IT |
 | Create New | *No direct ancestor* | Jobs to Be Done (Christensen) | Entirely new: capabilities that weren't previously feasible |
 | Prioritization Scoring | RICE (Intercom) | None | Rebuilt around operational friction + cascade potential |

@@ -1,13 +1,13 @@
 ---
 name: sonar-prioritize
-description: "SONAR Phase 3: Intervention Prioritizer. Takes the Operational Map (Phase 1) and Friction Table (Phase 2) and produces an Intervention Roadmap, with each high-friction process classified as Automate, Augment, or Create New, scored on four axes, and sorted into three tiers (Quick Wins, Strategic Investments, Future Capabilities). Trigger phrases: 'sonar-prioritize', 'prioritize interventions', 'what should we automate first', 'intervention roadmap', 'where do we start'."
+description: "SONAR Phase 3: Intervention Prioritizer. Takes the Operational Map (Phase 1) and Friction Table (Phase 2) and produces an Intervention Roadmap, with each high-friction process classified as Eliminate, Automate, Augment, or Create New, scored on four axes, and sorted into three tiers (Quick Wins, Strategic Investments, Future Capabilities). Trigger phrases: 'sonar-prioritize', 'prioritize interventions', 'what should we automate first', 'intervention roadmap', 'where do we start'."
 license: MIT
 metadata:
-  version: 1.0.0
+  version: 2.0.0
   author: Alex Makarski
   category: operations
   domain: operational-diagnostics
-  updated: 2026-03-23
+  updated: 2026-03-28
 ---
 
 # SONAR, Phase 3: Intervention Prioritizer
@@ -41,9 +41,33 @@ Read the Friction Table from Phase 2. Every process above the Top Friction Line 
 
 Also include every gap detected in Phase 1 (missing processes, informal processes) as "Create New" candidates.
 
+Before classifying any intervention, ask of each process: "If this process disappeared tomorrow, would anyone notice within 30 days?" If the answer is no, classify it as Eliminate before considering Automate or Augment.
+
 ### Step 2: Classify Each Intervention
 
 For each candidate, determine the intervention type:
+
+#### Eliminate
+**Definition:** Remove the process entirely. It should not exist -- not automated, not augmented, not improved. Killed.
+
+**When to classify as Eliminate:**
+- Process exists because of a requirement that no longer applies (departed client, old compliance rule, legacy workflow)
+- Process is a workaround for a problem that has been solved by other means
+- Process produces output that nobody consumes or acts on
+- Process duplicates another process (redundancy detected in Phase 1)
+- The "disappear test" passes: if this process stopped tomorrow, no one would notice within 30 days
+
+**Examples:**
+- Weekly status report that nobody reads (the data is already visible in the PM tool)
+- Manual data reconciliation between two systems that now sync automatically
+- Approval step that was added for a manager who left two years ago
+- QA checklist for a platform the organization no longer uses
+
+**Eliminate requires:**
+- Confirmation that no downstream process depends on this one's output
+- Brief documentation of why it existed and why it no longer needs to (prevents resurrection)
+
+**Scoring note:** Eliminate interventions get Friction Recovered equal to the full weighted friction score (you're recovering 100% of the friction), Implementation Complexity of 1 (just stop doing it), and the priority formula handles the rest. They almost always land in Tier 1.
 
 #### Automate
 **Definition:** Replace the manual process entirely with a system that runs without human intervention.
@@ -170,7 +194,7 @@ Score range: -2 to 14
 |------|----------|-------------|
 | **Tier 1: Quick Wins** | Priority Score ≥ 8 AND Implementation Complexity ≤ 2 | High impact, low effort. Do these first. They build momentum and free capacity. |
 | **Tier 2: Strategic Investments** | Priority Score ≥ 6 AND Implementation Complexity ≥ 3 | High impact, high effort. Plan these. They require resources and commitment. |
-| **Tier 3: Future Capabilities** | Create New interventions OR Priority Score < 6 | Not urgent but strategically valuable. Queue after Tier 1 and 2 free capacity. |
+| **Tier 3: Future Capabilities** | Priority Score < 6 | Lower priority based on scoring. Queue after Tier 1 and 2 free capacity. |
 
 **Override rules:**
 - Any intervention with Risk of Inaction = 5 automatically promotes to Tier 1 regardless of complexity. If it's about to break, it can't wait.
@@ -190,6 +214,25 @@ Some interventions depend on others. Identify and document:
 
 If a Tier 1 intervention depends on a Tier 2 intervention, flag the conflict: "Quick Win X requires Strategic Investment Y to be completed first. Consider promoting Y or finding an alternative path for X."
 
+### Step 5.5: Surface AI-Native Capabilities
+
+After classifying and scoring all interventions on existing processes and gaps, ask one additional question:
+
+**"Given what we now know about this organization's systems, data, workflows, and pain points -- what capabilities could AI enable that nobody is currently doing and that Phase 1 didn't surface as a gap?"**
+
+This is a generative step, not an analytical one. Look for:
+
+- **Data that exists but isn't being synthesized.** Multiple systems contain signals that, combined, would surface insights no one currently has. (Example: CRM activity + project hours + invoice timing = early warning system for at-risk client relationships.)
+- **Monitoring that would be valuable but was never humanly feasible.** Continuous processes that require watching everything simultaneously. (Example: real-time anomaly detection across all active projects.)
+- **Pattern detection across the portfolio.** Insights that only emerge at scale across clients, projects, or time periods. (Example: identifying which project types consistently run over budget before the next one starts.)
+
+For each capability identified:
+1. Classify as "Create New"
+2. Score on the same four axes as all other interventions
+3. Let the priority formula determine its tier -- do NOT auto-assign to Tier 3
+
+This step is explicitly generative. The prioritizer is permitted to imagine capabilities here that no phase previously surfaced. But each must be grounded in data and systems the organization actually has access to. No speculative capabilities requiring data that doesn't exist.
+
 ### Step 6: Produce the Intervention Roadmap
 
 Update the working document with the complete roadmap:
@@ -203,7 +246,7 @@ Update the working document with the complete roadmap:
 **Prioritizer:** Claude (Phase 3, Intervention Prioritizer)
 **Margin pressure context:** [from intake: what's driving this diagnostic]
 **Processes above Top Friction Line:** [N]
-**Total interventions recommended:** [N] ([N] Automate, [N] Augment, [N] Create New)
+**Total interventions recommended:** [N] ([N] Eliminate, [N] Automate, [N] Augment, [N] Create New)
 
 ---
 
@@ -212,7 +255,7 @@ Update the working document with the complete roadmap:
 
 | # | Process | Intervention Type | Friction Recovered | Complexity | Risk | Cascade | Priority Score | Description |
 |---|---------|------------------|-------------------|------------|------|---------|---------------|-------------|
-| 1 | [Name] | [Auto/Aug/New] | [1-5] | [1-5] | [1-5] | [1-5] | [score] | [What changes] |
+| 1 | [Name] | [Elim/Auto/Aug/New] | [1-5] | [1-5] | [1-5] | [1-5] | [score] | [What changes] |
 | 2 | ... | ... | ... | ... | ... | ... | ... | ... |
 
 #### Quick Win Details
@@ -273,9 +316,10 @@ Based on dependencies and tier assignments, the recommended execution order is:
 
 If all Tier 1 and Tier 2 interventions are implemented:
 - **Friction Tax reduction:** From [current]% to estimated [target]% (a [X] percentage point reduction)
+- **Processes eliminated:** [N] (removed entirely -- no longer needed)
 - **Processes fully automated:** [N] (currently Manual-Repetitive, converting to Fully Automated)
 - **Processes augmented:** [N] (staying Manual-Judgment but with AI/tooling support)
-- **New capabilities added:** [N] (filling gaps identified in Phase 1)
+- **New capabilities added:** [N] (filling gaps or AI-native capabilities from Step 5.5)
 
 ---
 
@@ -293,7 +337,7 @@ Save the updated working document to the engagement folder.
 
 ## Constraints
 
-- NEVER invent processes that Phase 1 didn't map. Every intervention must trace to a mapped process or detected gap.
+- NEVER invent processes that Phase 1 didn't map, except in Step 5.5 where you may identify AI-native capabilities grounded in the organization's existing data and systems.
 - NEVER change friction scores from Phase 2. If you disagree with a score, flag it as "Measurement may understate/overstate; consider re-scoring" but use the Phase 2 number in your calculations.
 - NEVER make technology choices. "Automate report generation" is your job. "Use Zapier to connect ClickUp to Google Docs" is NOT your job. The roadmap says *what* to change, not *how* to build it.
 - NEVER implement anything. You produce the plan. Execution is a separate workstream.

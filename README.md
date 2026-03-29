@@ -19,7 +19,7 @@ Each phase is role-locked. The mapper can't recommend. The measurer can't priori
 
 ## What's inside
 
-- **5 skills + 1 agent** that install into Claude Code
+- **5 skills + 1 agent** that install into Claude Code (v2.0.0: Eliminate intervention type, AI-native capability scan, isolated critic agent)
 - **4 core phases** that progress from observation to measurement to prioritization to execution
 - **1 orchestrator** that chains everything with quality gates
 - **1 critic agent** that reviews every phase in isolation

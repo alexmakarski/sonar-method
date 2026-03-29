@@ -2,7 +2,7 @@
 
 ## What It Is
 
-SONAR is a multi-phase operational diagnostics method that maps how work actually flows through an organization, measures the friction cost of each process, and prioritizes where AI automation, human augmentation, or entirely new capabilities will recover the most margin. It replicates the diagnostic sequence of an operations consultant who has been given full access to the building: walk the floor first, measure what you see, then recommend where to intervene.
+SONAR is a multi-phase operational diagnostics method that maps how work actually flows through an organization, measures the friction cost of each process, and identifies which processes to eliminate entirely, where to apply AI automation or human augmentation, and where entirely new capabilities will recover the most margin. It replicates the diagnostic sequence of an operations consultant who has been given full access to the building: walk the floor first, measure what you see, then recommend where to intervene.
 
 It is not a prompt. It is a *workflow architecture* built from role-locked phases that mirror a diagnostic progression. The mapper observing processes cannot recommend interventions. The measurer quantifying costs cannot prioritize them. The prioritizer ranking interventions cannot invent processes the mapper didn't find.
 
@@ -145,6 +145,7 @@ Every recommended intervention falls into one of three categories:
 
 | Category | Definition | Example |
 |----------|-----------|---------|
+| **Eliminate** | Remove the process entirely. It exists because of a requirement that no longer applies, a workaround for a solved problem, or produces output nobody consumes. | Weekly status report that nobody reads because the data is already visible in the PM tool |
 | **Automate** | Replace a manual process with a system that runs without human intervention. | Auto-generate weekly client reports from project management data instead of having a PM write them manually |
 | **Augment** | Keep the human in the process but give them AI/tooling that makes them faster, more accurate, or more capable. | AI drafts the client report; PM reviews and personalizes instead of writing from scratch |
 | **Create New** | Build a capability that didn't exist before because it wasn't feasible without AI/automation. | Continuous project health monitoring that flags at-risk deliverables before anyone notices, since no human could watch all projects simultaneously |
@@ -167,12 +168,12 @@ The Intervention Roadmap is organized in three tiers:
 
 - **Tier 1: Quick Wins.** High friction recovered, low implementation complexity. Do these first. They build momentum and free capacity for harder changes.
 - **Tier 2: Strategic Investments.** High friction recovered, high implementation complexity. These are the big moves that require planning, resources, and organizational buy-in.
-- **Tier 3: Future Capabilities.** Create New interventions that aren't urgent but represent competitive advantages. Queue these after Tier 1 and 2 free up capacity.
+- **Tier 3: Future Capabilities.** Lower-priority interventions based on scoring. Queue these after Tier 1 and 2 free up capacity.
 
 Each intervention in the roadmap includes:
 - The specific process it targets (traced back to Phase 1)
 - The friction it addresses (traced back to Phase 2)
-- The intervention type (Automate / Augment / Create New)
+- The intervention type (Eliminate / Automate / Augment / Create New)
 - A plain-language description of what changes
 - Prerequisites (other interventions or conditions that must be in place first)
 - Estimated complexity (Low / Medium / High)
@@ -237,7 +238,7 @@ Runs automatically after every phase. It adapts its checks to the phase it's rev
 
 **After Phase 3 (Prioritization):**
 - Evidence trail: Does every intervention trace back to a measured process?
-- Classification accuracy: Are interventions correctly categorized as Automate / Augment / Create New?
+- Classification accuracy: Are interventions correctly categorized as Eliminate / Automate / Augment / Create New?
 - Prioritization logic: Do the tier assignments follow from the scoring criteria?
 - Feasibility check: Are complexity estimates realistic, or is the prioritizer being optimistic?
 - Scope check: Did the prioritizer make technology choices it shouldn't have?
@@ -283,9 +284,9 @@ Generic automation advice is based on what's *typically* automatable, not what's
 
 ### 2. Automating the Wrong Thing
 
-The most visible process isn't always the most expensive. Organizations often automate what's annoying (email) while ignoring what's actually consuming margin (manual handoffs between systems that nobody notices because "that's just how it works").
+The most visible process isn't always the most expensive. Organizations often automate what's annoying (email) while ignoring what's actually consuming margin (manual handoffs between systems that nobody notices because "that's just how it works"). Worse, they sometimes automate processes that shouldn't exist at all -- making waste faster is still waste.
 
-**SONAR fix:** Phase 2 measures friction objectively across five dimensions. The Friction Table shows what's *actually* expensive, not what *feels* expensive.
+**SONAR fix:** Phase 2 measures friction objectively across five dimensions. Phase 3 applies the "disappear test" before classifying any intervention: if the process vanished and nobody noticed within 30 days, the right answer is Eliminate, not Automate. The Friction Table shows what's *actually* expensive, not what *feels* expensive.
 
 ### 3. Missing What Doesn't Exist Yet
 

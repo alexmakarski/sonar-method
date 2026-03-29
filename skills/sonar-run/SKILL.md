@@ -204,7 +204,7 @@ HUMAN GATE. Please review and respond:
 ### Step 4: Phase 3, Intervention Prioritization
 
 Execute the `/sonar-prioritize` logic:
-- Classify each high-friction process for intervention type (Automate / Augment / Create New)
+- Classify each process for intervention type (Eliminate / Automate / Augment / Create New)
 - Score each intervention on four axes (Friction Recovered, Implementation Complexity, Risk of Inaction, Cascade Potential)
 - Sort into three tiers (Quick Wins, Strategic Investments, Future Capabilities)
 - Produce the Intervention Roadmap
@@ -307,7 +307,7 @@ Reviews passed: [N]/[N]
 Key findings:
 - [N] processes mapped ([N] Manual-Repetitive, [N] Manual-Judgment, [N] Semi-Automated, [N] Fully Automated)
 - Friction Tax: [X]%
-- [N] interventions recommended ([N] Automate, [N] Augment, [N] Create New)
+- [N] interventions recommended ([N] Eliminate, [N] Automate, [N] Augment, [N] Create New)
 - [N] Quick Wins ready to implement
 
 All files in [engagement folder]:
